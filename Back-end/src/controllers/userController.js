@@ -5,24 +5,8 @@ import "dotenv/config";
 import jwt from "jsonwebtoken";
 
 export const signIn = async (req, res) => {
-  try {
-    const token = req.cookies?.access_token;
-    if (token) {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      if (decoded) {
-        // const id = new mongoose.Types.ObjectId(decoded.id);
-        const user = await User.findOne({
-          _id: decoded.id,
-        });
-        if (user) {
-          return res.json(user);
-        }
-      }
-    }
-  } catch (error) {
-    console.log(error);
-  }
   const { email, password, username } = req.body;
+  console.log(req.body);
   if ([username, password].some((item) => item === "")) {
     return res.status(400).json({ error: "All Fields are Required!" });
   }

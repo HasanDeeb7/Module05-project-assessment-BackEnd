@@ -9,5 +9,5 @@ import {
 export const orderRouter = new Router();
 
 orderRouter.get("/", authenticate, isAdmin, getOrders);
-orderRouter.get("/update", authenticate, isAdmin, updateStatus);
-orderRouter.get("/create", authenticate, createOrder);
+orderRouter.patch("/update", authenticate, isAdmin, updateStatus);
+orderRouter.post("/create", authenticate, createOrder);

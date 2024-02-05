@@ -20,7 +20,7 @@ export async function createOrder(req, res) {
     const newOrder = await Order.create({
       products: products,
       quantity: quantity,
-      user: userId,
+      user: userId, 
     });
     if (newOrder) {
       return res.json(newOrder);
